@@ -14,7 +14,8 @@ public class ProjectEuler {
         //System.out.println("largest prime: " + largestPrimeFactor(new Long("600851475143")));
         // System.out.println(isPrime(new Long("6857")));
         //System.out.println(isPalindrome("9009"));//"AManAPlanACanalPanama"
-        System.out.println(largestPalindromeProduct());
+        //System.out.println(largestPalindromeProduct());
+        System.out.println(lengthOfNumber(123456789));
     }
 
     /**
@@ -58,7 +59,7 @@ public class ProjectEuler {
                 System.out.println("------------------");
                 for (int j = 999; j > 99; j--) {
                     System.out.println("trying " + i + " for..." + j);
-                    if (i % j == 0 && (String.valueOf(i/j).length()==3) ) {
+                    if (i % j == 0 && ((int) (Math.log10(i/j) + 1)==3) ) {
                         palindrome = i;
                         break;
                     }
@@ -82,6 +83,28 @@ public class ProjectEuler {
         }
         return true;
     }
+    
+    
+    /**
+     * Number of digits
+     * 
+     * @return
+     */
+    static int lengthOfNumber(int x) {
+        int t = 1, l = 0;
+
+        while (t < x) {
+            t *= 10;
+            l++;
+        }
+        return l;
+    }
+    
+    /**
+     * Primality test for positive number
+     * @param x
+     * @return
+     */
     static boolean isPrime(Long x) {
         if (x <= 1)
             return false;
