@@ -15,7 +15,8 @@ public class ProjectEuler {
         // System.out.println(isPrime(new Long("6857")));
         //System.out.println(isPalindrome("9009"));//"AManAPlanACanalPanama"
         //System.out.println(largestPalindromeProduct());
-        System.out.println(lengthOfNumber(123456789));
+        //System.out.println(lengthOfNumber(123456789));
+        System.out.println("Smallest multiple :"+smallestMultiple());
     }
 
     /**
@@ -70,6 +71,36 @@ public class ProjectEuler {
         return palindrome;
     }
     
+    /**
+     * 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+     * 
+     * What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+     * https://projecteuler.net/problem=5
+     * 
+     * @return
+     */
+    static int smallestMultiple() {
+        int firstX = 20;
+        int sm=0;
+        for(int i=232792559; i < 232792561 ;i++) {
+            int j =2;
+            for (; j <= firstX; j++) {
+                int ij = i%j;
+                System.out.println("i : "+i+", j :"+j+", i%j :"+ij);
+                if(ij==0) {
+                    continue;
+                }else {
+                    break;
+                }
+            }
+            if(j==firstX+1) {
+                sm=i;
+                break;
+            }
+        }
+        
+        return sm;
+    }
 
     static boolean isPalindrome(String p) {
         if(p==null) return false;
