@@ -1,16 +1,12 @@
-package test.one;
+package utils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 
 /**
 * Test 1 is a class for practice code
@@ -48,7 +44,7 @@ public class Test1 {
      * @param m
      * @param r
      */
-    private static void merge(int[] arr, int l, int m, int r) {
+    public static void merge(int[] arr, int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
         // int[] sortedArr = new int[arr.length];
@@ -130,7 +126,7 @@ public class Test1 {
         return minArr;
     }
 
-    static int minimumSwaps(int[] popularity) {
+    int minimumSwaps(int[] popularity) {
         int[] minArr = getMinArray(popularity);
         int swapCount = 0;
 
