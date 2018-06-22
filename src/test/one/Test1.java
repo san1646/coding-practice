@@ -12,6 +12,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+/**
+* Test 1 is a class for practice code
+* */
 public class Test1 {
 
     public static void main(String[] args) {
