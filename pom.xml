@@ -1,6 +1,17 @@
 <project>
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.coding.practice</groupId>
-  <artifactId>coding-practice</artifactId>
-  <version>1</version>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.coding.practice</groupId>
+	<artifactId>coding-practice</artifactId>
+	<version>1</version>
+	<dependencies>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
 </project>

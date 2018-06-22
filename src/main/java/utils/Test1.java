@@ -107,6 +107,11 @@ public class Test1 {
         }
     }
 
+    /**
+     * removes duplicates from the arr
+     * @param popularity
+     * @return
+     */
     private static int[] getMinArray(int[] popularity) {
         Set<Integer> set1 = new LinkedHashSet<Integer>();
         int index = 0;
@@ -126,7 +131,13 @@ public class Test1 {
         return minArr;
     }
 
-    int minimumSwaps(int[] popularity) {
+    /**
+     * Min number of swaps to sort
+     * This uses bubble sort
+     * @param popularity
+     * @return
+     */
+    public int minimumSwaps(int[] popularity) {
         int[] minArr = getMinArray(popularity);
         int swapCount = 0;
 
