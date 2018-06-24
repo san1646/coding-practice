@@ -2,7 +2,7 @@ package utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AmazonTest {
+public class AzTest {
 
  
  // METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
@@ -83,7 +83,7 @@ public class AmazonTest {
   // METHOD SIGNATURE ENDS
     
     public static void main(String[] args) {
-        AmazonTest test = new AmazonTest();
+        AzTest test = new AzTest();
         System.out.println("cellCompete:  "+test.cellCompete(new int[] {1,0,0,0,0,1,0,0}, 1));
     }
     

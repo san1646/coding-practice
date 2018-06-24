@@ -1,4 +1,4 @@
-package companies.thoughtworks;
+package companies.tw;
 
 public class Practice {
 

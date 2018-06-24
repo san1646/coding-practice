@@ -1,6 +1,9 @@
-package companies.thoughtworks;
+package companies.tw;
 
 import org.testng.annotations.Test;
+
+import companies.tw.Practice;
+
 import org.testng.annotations.BeforeClass;
 
 public class PracticeTest {
