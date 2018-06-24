@@ -11,8 +11,14 @@ public class PracticeTest {
 
 
   @Test
-  public void printSquareWithNumbers() {
-    //throw new RuntimeException("Test not implemented");
-      p.printSquareWithNumbers(3);
+  public void testPrintSquareWithNumbers() {
+      p.printSquareWithConcentricNumbers(5);
   }
+  
+  @Test
+  public void testPrintPerfectRhombus() {
+      p.printPerfectRhombus(4);
+  }
+  
+  
 }
