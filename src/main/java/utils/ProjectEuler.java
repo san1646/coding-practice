@@ -42,7 +42,7 @@ public class ProjectEuler {
     /**
      * https://projecteuler.net/problem=4
      * A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit
-     * numbers is 9009 = 91 × 99.
+     * numbers is 9009 = 91 Ã— 99.
      * 
      * Find the largest palindrome made from the product of two 3-digit numbers.
      * 913*993
@@ -151,5 +151,89 @@ public class ProjectEuler {
             }
         }
         return true;
+    }
+
+    /**
+     * The sum of the squares of the first ten natural numbers is,
+     * 
+     * numbers is,
+     * 1² + 2² + ... + 10² = 385 The square of the sum of the first ten natural
+     * 
+     * (1 + 2 + ... + 10)² = 55² = 3025 Hence the difference between the sum of the
+     * squares of the first ten natural numbers and the square of the sum is 3025 −
+     * 385 = 2640.
+     * 
+     * Find the difference between the sum of the squares of the first one hundred
+     * natural numbers and the square of the sum. 
+     * 
+     * https://projecteuler.net/problem=6
+     */
+    int sumSquareDifference(int n) {
+	int sumOfSquares = 0;
+	int squareOfSum = 0;
+	for(int i=1; i<=n;i++) {
+	    sumOfSquares += Math.pow(i, 2);
+	}
+	
+	for(int i=1; i<=n;i++) {
+	    squareOfSum += i;
+	}
+	squareOfSum = (int) Math.pow(squareOfSum, 2);
+	
+	return - sumOfSquares + squareOfSum;
+    }
+    
+    /**
+     * 
+     * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see
+     * that the 6th prime is 13.
+     * 
+     * What is the 10 001st prime number? https://projecteuler.net/problem=7
+     * 
+     * @return
+     * hint: 
+     * // Entry k in the array represents the number 2*k+3, so we have to do
+	// a bit of arithmetic to get the indices right.
+	public static int nthPrime(int n) {
+            if (n < 2) return 2;
+            if (n == 2) return 3;
+            int limit, root, count = 1;
+            limit = (int)(n*(Math.log(n) + Math.log(Math.log(n)))) + 3;
+            root = (int)Math.sqrt(limit) + 1;
+            limit = (limit-1)/2;
+            root = root/2 - 1;
+            boolean[] sieve = new boolean[limit];
+            for(int i = 0; i < root; ++i) {
+                if (!sieve[i]) {
+                    ++count;
+                    for(int j = 2*i*(i+3)+3, p = 2*i+3; j < limit; j += p) {
+                        sieve[j] = true;
+                    }
+                }
+            }
+            int p;
+            for(p = root; count < n; ++p) {
+                if (!sieve[p]) {
+                    ++count;
+                }
+            }
+            return 2*p+1;
+        }
+     */
+    int findNthPrime(int x) {
+        if (x <= 1)
+            return 1;
+        if (x <= 3)
+            return 3;
+
+/*        if (x % 2 == 0 || x % 3 == 0)
+            return false;
+*/
+        for (Long i = 5L; i * i <= x; i = i + 6) {
+            if (x % i == 0 || x % (i + 2) == 0) {
+                return x;
+            }
+        }
+	return 0;
     }
 }
