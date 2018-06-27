@@ -261,6 +261,7 @@ public class ProjectEuler {
      * 
      * Note: This seems right, but Project Euler does not like the answer.
      * NOT WORKING!!!
+     * I think it is though.
      * https://projecteuler.net/problem=8
      * @param n
      * @param thousandDigits
