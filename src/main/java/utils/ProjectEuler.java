@@ -219,6 +219,8 @@ public class ProjectEuler {
             }
             return 2*p+1;
         }
+        
+        NOT WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
      */
     int findNthPrime(int x) {
         if (x <= 1)
@@ -235,5 +237,51 @@ public class ProjectEuler {
             }
         }
 	return 0;
+    }
+    
+    /**
+     * brute force 
+     * @see utils.ProjectEuler.findNthPrime(int)
+     * @param n
+     * @return
+     */
+    public int nthPrime(int n) {
+	    int candidate, count;
+	    for(candidate = 2, count = 0; count < n; ++candidate) {
+	        if (isPrime(new Long(candidate))) {
+	            ++count;
+	        }
+	    }
+	    // The candidate has been incremented once after the count reached n
+	    return candidate-1;
+	}
+
+    /**
+     * Highest product of n adjacent numbers
+     * 
+     * Note: This seems right, but Project Euler does not like the answer.
+     * NOT WORKING!!!
+     * https://projecteuler.net/problem=8
+     * @param n
+     * @param thousandDigits
+     * @return
+     */
+    public int productOfAdjacentN(int n, String thousandDigits) {
+	String[] arr = thousandDigits.split("");
+	
+	int highest = 0;
+	for (int i = 0; i <=arr.length-n; i++) {
+	    int product = 1;
+	    for(int k =i; k<i+n;k++) {
+		product *= Integer.valueOf(arr[k]);
+	    }
+	    if(product>highest) {
+		highest=product;
+	    }
+	    if(i>985) {
+		System.out.println("For i="+i+", arr[i]"+arr[i]);
+	    }
+	}
+	return highest;
     }
 }
