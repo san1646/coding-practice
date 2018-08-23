@@ -1,6 +1,8 @@
 package utils;
 
-import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
+import org.testng.Assert;
 
 /**
  * https://projecteuler.net/
@@ -328,6 +330,121 @@ public class ProjectEuler {
     public float calculateIncrementalAverage(float average, float x, int n) {
         float diff = (x - average) / n;
         return average + diff;
+    }
+    
+    /**
+     * Problem 17
+     * If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 =
+     * 19 letters used in total.
+     * 
+     * If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be
+     * used?
+     * 
+     * 
+     * NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115
+     * (one hundred and fifteen) contains 20 letters. The use of "and" when writing out numbers is in compliance with
+     * British usage.
+     * 
+     * STATUS: 201808231414 Not working
+     */
+    public int numberLetterCounts(int n) {
+        /*
+         * Map<Integer, String> num_words = new HashMap<Integer, String>();
+         * num_words.put(0, "zero");
+         * num_words.put(1, "one");
+         * num_words.put(2, "two");
+         * num_words.put(3, "three");
+         * num_words.put(4, "four");
+         * num_words.put(5, "five");
+         * num_words.put(6, "six");
+         * num_words.put(7, "seven");
+         * num_words.put(8, "eight");
+         * num_words.put(9, "nine");
+         */
+        Map<Integer, Integer> num_words = new HashMap<Integer, Integer>();
+        num_words.put(0, 4);// "zero");
+        num_words.put(1, 3);// "one");
+        num_words.put(2, 3);// "two");
+        num_words.put(3, 5);// "three");
+        num_words.put(4, 4);// "four");
+        num_words.put(5, 4);// "five");
+        num_words.put(6, 3);// "six");
+        num_words.put(7, 5);// "seven");
+        num_words.put(8, 5);// "eight");
+        num_words.put(9, 4);// "nine");
+        num_words.put(10, 3);// "ten");
+        num_words.put(11, 6);// "eleven");
+        num_words.put(12, 6);// "twelve");
+        num_words.put(13, 8);// "thirteen");
+        num_words.put(14, 8);// "fourteen");
+        num_words.put(15, 7);// "fifteen");
+        num_words.put(16, 7);// "sixteen");
+        num_words.put(17, 9);// "seventeen");
+        num_words.put(18, 8);// "eighteen");
+        num_words.put(19, 8);// "nineteen");
+        num_words.put(20, 6);// "twenty");
+        num_words.put(30, 6);// "thirty");
+        num_words.put(40, 5);// "forty");
+        num_words.put(50, 5);// "fifty");
+        num_words.put(60, 5);// "sixty");
+        num_words.put(70, 7);// "seventy");
+        num_words.put(80, 6);// "eighty");
+        num_words.put(90, 6);// "ninety");
+        
+
+        int andCount = 3;
+        int hundredCount = 7;
+        int kCount = 8;// thousand
+
+        int total = 0;
+        
+        for (int i = 1; i <= n; i++) {
+            String[] digits = extractDigits(i);
+            for (int k = 0; k < digits.length; k++) {
+                Integer val = Integer.parseInt(digits[k]);
+                int wordCount = num_words.get(val);
+                if(digits.length==3) {
+                    wordCount += hundredCount + andCount;
+                }else if(digits.length==4){
+                    wordCount += kCount;
+                }
+                total += wordCount;
+            }
+        }
+        
+        
+        
+
+        return total;
+    }
+
+    
+
+
+    /**
+     * Given an Integer, extract the digits
+     * Returns a string array with all the digits
+     * @param number
+     * @return
+     */
+    String[] extractDigits(Integer number) {
+        
+        Integer m, n;
+        m=n= Math.abs(number);
+        
+        int count = 0;
+        while (n > 0) {
+            n = n / 10;
+            count++;
+        }
+        
+        String[] digits = new String[count];
+        while (m > 0) {
+            digits[count-1] = m % 10 + "";
+            m = m / 10;
+            count--;
+        }
+        return digits;
     }
     
 }

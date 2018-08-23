@@ -1,16 +1,18 @@
 package utils;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.BeforeClass;
+import java.util.Arrays;
+import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 public class ProjectEulerTest {
     
@@ -140,5 +142,38 @@ public class ProjectEulerTest {
             avg =  euler.calculateIncrementalAverage(avg, Long.valueOf(i), i);
             System.out.println(" val=" + i + ": avg=" +avg);
         }
+    }
+    
+    @Test
+    void testExtractDigits()  {
+        
+        List<String> digits = Arrays.asList(euler.extractDigits(new Integer(345)));
+        Assert.assertTrue(digits.contains("3"));
+        Assert.assertTrue(digits.contains("4"));
+        Assert.assertTrue(digits.contains("5"));
+        
+        digits = Arrays.asList(euler.extractDigits(new Integer(100001)));
+        Assert.assertTrue(digits.contains("1"));
+        Assert.assertTrue(digits.contains("0"));
+        Assert.assertTrue(digits.contains("1"));
+        
+        digits = Arrays.asList(euler.extractDigits(new Integer(-788)));
+        Assert.assertTrue(digits.contains("7"));
+        Assert.assertTrue(digits.contains("8"));
+        
+    }
+    
+    @Test
+    void testNumberLetterCounts()  {
+        int expected = 19;
+        int total = euler.numberLetterCounts(5);
+        Assert.assertEquals(total, expected);
+        
+        
+        expected = 19;
+        total = euler.numberLetterCounts(12345);
+        Assert.assertEquals(total, expected);
+        
+        
     }
 }
