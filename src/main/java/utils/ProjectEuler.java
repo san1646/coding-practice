@@ -260,29 +260,74 @@ public class ProjectEuler {
      * Highest product of n adjacent numbers
      * 
      * Note: This seems right, but Project Euler does not like the answer.
-     * NOT WORKING!!!
+     * 20180715 WORKING!!! I was using int to store the product, it overflew, duh
      * I think it is though.
      * https://projecteuler.net/problem=8
      * @param n
      * @param thousandDigits
      * @return
      */
-    public int productOfAdjacentN(int n, String thousandDigits) {
-	String[] arr = thousandDigits.split("");
-	
-	int highest = 0;
-	for (int i = 0; i <=arr.length-n; i++) {
-	    int product = 1;
-	    for(int k =i; k<i+n;k++) {
-		product *= Integer.valueOf(arr[k]);
-	    }
-	    if(product>highest) {
-		highest=product;
-	    }
-	    if(i>985) {
-		System.out.println("For i="+i+", arr[i]"+arr[i]);
-	    }
-	}
-	return highest;
+    public Long productOfAdjacentN(int n, String thousandDigits) {
+        String[] arr = thousandDigits.split("");
+
+        Long highest = 0L;
+        for (int i = 0; i <= arr.length - n; i++) {
+            Long product = 1L;
+            for (int k = i; k < i + n; k++) {
+                product *= Integer.valueOf(arr[k]);
+            }
+            
+            if (product > highest) {
+                highest = product;
+                System.out.println("i when highest="+highest+" is found="+i);
+            }
+            if (i > 985) {
+                System.out.println("For i=" + i + ", arr[i]=" + arr[i]+"; product="+product);
+            }
+        }
+        return highest;
     }
+
+    /**
+     * A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+     * a2 + b2 = c2
+     * For example, 32 + 42 = 9 + 16 = 25 = 52.
+     * There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+     * Find the product abc.
+     * <br/> https://projecteuler.net/problem=9
+     * 
+     * NOT COMPLETE YET
+     */
+    public int specialPythagoreanTripletProblem9(int limit) {
+
+        Long a = 0L, b = 0L, c = 0L;
+        Long m = 2L;
+        while (c < limit) {
+            for (Long n = 1L; n < limit; n++) {
+                a = m * m - n * n;
+                b = 2 * m * n;
+                c = m * m + n * n;
+                if (c > limit) {
+                    break;
+                }
+                System.out.println("a,b,c=" + a + "," + b + "," + c);
+                /*if ((a + b + c) == 1000) {
+                    System.out.println("a,b,c=" + a + "," + b + "," + c);
+                    System.out.println("a^2 + b^2 = "
+                            + (Long.valueOf(a) * Long.valueOf(a)) + (Long.valueOf(b) * Long.valueOf(b)));
+                    System.out.println("c^2 = " + Long.valueOf(c) * Long.valueOf(c));
+                    System.out.println("Product is : " + (Long.valueOf(a) * Long.valueOf(b) * Long.valueOf(c)));
+                }*/
+            }
+            m++;
+        }
+
+        return 0;
+    }
+    
+    public float calculateIncrementalAverage(float average, float x, int n) {
+        float diff = (x - average) / n;
+        return average + diff;
+    }
+    
 }
