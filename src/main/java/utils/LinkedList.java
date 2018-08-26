@@ -1,6 +1,6 @@
 package utils;
 
-public class LeetCode {
+public class LinkedList {
 
     public class ListNode {
         int val;
@@ -80,6 +80,26 @@ public class LeetCode {
             }
         }
         return head;
+    }
+    
+    
+    /**
+     * Calculate length
+     * @param head
+     * @return
+     */
+    public int lengthOfLinkedList(ListNode head) {
+        if(head==null) {
+            return 0;
+        }
+        ListNode pointer = head;
+
+        int l=1;
+        while (pointer.next != null) {
+            l++;
+            pointer=pointer.next;
+        }
+        return l;
     }
 
     private ListNode swapNodes(ListNode one, ListNode two) {
