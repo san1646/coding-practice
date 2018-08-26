@@ -112,4 +112,30 @@ public class LinkedListTest {
         
         
     }
+    
+    
+    @Test
+    public void testReverseLinkedList() {
+        ListNode one = linkedList.new ListNode(1);
+        ListNode two = linkedList.new ListNode(2);
+        ListNode three = linkedList.new ListNode(3);
+        ListNode four = linkedList.new ListNode(4);
+        ListNode five = linkedList.new ListNode(5);
+        ListNode six = linkedList.new ListNode(6);
+        ListNode head = one;
+        one.next = two;
+        two.next = three;
+        three.next = four;
+        four.next = five;
+        five.next = six;
+        
+        System.out.println("Original>>> " + head.toString());
+        
+        ListNode newHead = linkedList.reverse(head);
+
+        System.out.println("Reversed>>> " + newHead.toString());
+        Assert.assertEquals(six.val, newHead.val);
+        Assert.assertEquals(five.val, newHead.next.val);
+
+    }
 }

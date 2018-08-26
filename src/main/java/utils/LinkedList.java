@@ -30,14 +30,14 @@ public class LinkedList {
         public String toString() {
             StringBuilder sb = new StringBuilder();
             ListNode n = this;
-            sb.append("{ ");
+            sb.append("{");
             while (n != null) {
-                sb.append("[ ");
+                sb.append("[");
                 sb.append(n.val);
-                sb.append("] ");
+                sb.append("]");
                 n = n.next;
             }
-            sb.append("} ");
+            sb.append("}");
 
             return sb.toString();
         }
@@ -58,53 +58,87 @@ public class LinkedList {
      * 
      * @param head
      * @return
-     * STATUS: works like a charm 4/5
+     *         STATUS: works like a charm 4/5
      */
     public ListNode swapPairs(ListNode head) {
-        if(head==null || head.next==null) {
+        if (head == null || head.next == null) {
             return head;
         }
         ListNode pointer = head;
 
-        
         while (pointer.equals(head) || (pointer.next != null && pointer.next.next != null)) {
             System.out.println("p is ->" + pointer.val);
             if (pointer.equals(head)) {
                 head = swapNodes(pointer, pointer.next);
             } else {
-                //for all cases other than head and head.next,
-                //swap the next and next to next element
-                //this way we preserve the previous node pointer
+                // for all cases other than head and head.next,
+                // swap the next and next to next element
+                // this way we preserve the previous node pointer
                 pointer.next = swapNodes(pointer.next, pointer.next.next);
                 pointer = pointer.next.next;
             }
         }
         return head;
     }
-    
-    
+
     /**
      * Calculate length
+     * 
      * @param head
      * @return
      */
     public int lengthOfLinkedList(ListNode head) {
-        if(head==null) {
+        if (head == null) {
             return 0;
         }
         ListNode pointer = head;
 
-        int l=1;
+        int l = 1;
         while (pointer.next != null) {
             l++;
-            pointer=pointer.next;
+            pointer = pointer.next;
         }
         return l;
     }
 
+    /**
+     * Reverse a singly linked list.
+     * 
+     * Example:
+     * 
+     * Input: 1->2->3->4->5->NULL
+     * Output: 5->4->3->2->1->NULL
+     * Follow up:
+     * 
+     * A linked list can be reversed either iteratively or recursively.
+     * Could you implement both?
+     * https://leetcode.com/problems/reverse-linked-list/description/
+     * 
+     * @param head
+     * @return
+     */
+    public ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode pre = null;
+        ListNode curr = head;
+        ListNode post = head.next;
+
+        while (curr != null) {
+            post = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = post;
+        }
+        return pre;
+    }
+
     private ListNode swapNodes(ListNode one, ListNode two) {
+
         one.next = two.next;
         two.next = one;
         return two;
     }
+
 }
