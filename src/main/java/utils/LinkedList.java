@@ -141,4 +141,55 @@ public class LinkedList {
         return two;
     }
 
+    /**
+     * Delete a list
+     * 
+     * @param head
+     * @return
+     */
+    public ListNode deleteList(ListNode head) {
+        ListNode curr = head, temp = head.next;
+
+        while (curr != null) {
+            temp = curr.next;
+            curr.next = null;
+            curr = temp;
+        }
+        return curr;
+    }
+
+    /**
+     * insert at nth position
+     * index starts at 0
+     * 
+     * eg: insert at 5
+     * 1->2->3->4->6
+     * 
+     * @param head
+     * @param nthNode
+     * @param n
+     * @return
+     */
+    public ListNode insertNth(ListNode head, ListNode nthNode, int n) {
+        ListNode curr = head;
+        int index = 0;
+        while (curr != null && index <= n) {
+            if (index == (n - 1)) {
+                ListNode temp = curr.next;// element after n
+                curr.next = nthNode;
+                nthNode.next = temp;
+                break;
+            }else if(n==0){
+                nthNode.next=head;
+                head=nthNode;
+                break;
+            }
+            else {
+                index++;
+                curr = curr.next;
+            }
+        }
+        return head;
+    }
+
 }
