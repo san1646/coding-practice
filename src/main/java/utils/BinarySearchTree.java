@@ -12,17 +12,39 @@ public class BinarySearchTree {
         root = null;
     }
 
-    void printPostOrder(Node node) {
+    void postOrderTraversal(Node node) {
         while (true) {
             if (node.left != null) {
-                printPostOrder(node.left);
+                postOrderTraversal(node.left);
             }
 
             if (node.right != null) {
-                printPostOrder(node.right);
+                postOrderTraversal(node.right);
             }
 
-            System.out.println(node.val);
+            System.out.print(node.val+"-");
+            return;
+        }
+    }
+    
+
+    /**
+     * Not working yet
+     * @param node
+     */
+    void inOrderTraversal(Node node) {
+        while (true) {
+            if (node.left != null) {
+                postOrderTraversal(node.left);
+            }
+
+            System.out.print(node.val + "-");
+            
+            if (node.right != null) {
+                postOrderTraversal(node.right);
+            }
+
+            
             return;
         }
     }
@@ -99,7 +121,7 @@ public class BinarySearchTree {
         tree.root = tree.buildTree(in, pre, 0, len - 1);
 
         System.out.println("\nPostorder traversal of binary tree is ");
-        tree.printPostOrder(tree.root);
+        tree.postOrderTraversal(tree.root);
 
         System.out.println("\nSize of binary tree is :" + tree.sizeOfTree(tree.root));
     }
