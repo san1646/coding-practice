@@ -2,6 +2,7 @@ package utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class Test2 {
@@ -62,6 +63,58 @@ public class Test2 {
 
     
 
+    /**
+     * Find all permutations of s in b
+     * @param s
+     * @param b
+     * @return
+     * ex: s: xacxzaa
+     *     b: fxaazxacaaxzoecazxaxaz
+     *     
+     *     STATUS: in complete
+     */
+    public String[] findAllSubstrings(String s, String b) {
+        HashSet<String> permutationsOfS = findAllPermutations(s.toCharArray(), 0, s.length()-1);
+        System.out.println("found the permutations");
+        
+        
+        
+        
+        return null;
+    }
+    
+    /**
+     * Find all permutations of a string
+     * @param arr
+     * @param l
+     * @param r
+     * @return
+     * 
+     * STATUS: in complete
+     */
+    public HashSet<String> findAllPermutations(char[] arr, int l, int r){
+        HashSet<String> set = new HashSet<>();
+
+        if(l == r) {
+            set.add(arr.toString());
+        }else {
+        
+        for(int i = l;i<=r;i++) {
+            swap(arr, l, i);
+            set.addAll(findAllPermutations(arr, l+1, r));
+            swap(arr, l, i);
+        }
+        
+        }
+        return set;
+    }
+    char[] swap(char[] arr, int x, int y){
+        char temp = arr[x];
+        arr[x] = arr[y];
+        arr[y]=temp;
+        
+        return arr;
+    }
 
 
 }

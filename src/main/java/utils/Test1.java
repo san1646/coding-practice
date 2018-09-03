@@ -143,7 +143,6 @@ public class Test1 {
             while(arr[left] < arr[pIndex]) {
                 left++;
             }
-            
             while(arr[right] > arr[pIndex]) {
                 right--;
             }
@@ -152,7 +151,6 @@ public class Test1 {
                 left++;
                 right--;
             }
-            
         }
         return left;
     }

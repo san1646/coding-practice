@@ -5,14 +5,14 @@ import java.util.List;
 
 public class BinarySearchTree {
 
-    Node root;
+    Node1 root;
     static int preIndex = 0;
 
-    public BinarySearchTree() {
-        root = null;
+    public BinarySearchTree(Node1 root) {
+        this.root = root;
     }
 
-    void postOrderTraversal(Node node) {
+    void postOrderTraversal(Node1 node) {
         while (true) {
             if (node.left != null) {
                 postOrderTraversal(node.left);
@@ -32,7 +32,7 @@ public class BinarySearchTree {
      * Not working yet
      * @param node
      */
-    void inOrderTraversal(Node node) {
+    void inOrderTraversal(Node1 node) {
         while (true) {
             if (node.left != null) {
                 postOrderTraversal(node.left);
@@ -49,7 +49,7 @@ public class BinarySearchTree {
         }
     }
 
-    int sizeOfTree(Node node) {
+    int sizeOfTree(Node1 node) {
         if (node == null)
             return 0;
         return 1 + sizeOfTree(node.left) + sizeOfTree(node.right);
@@ -73,13 +73,13 @@ public class BinarySearchTree {
     /**
      * Build a tree from in-order and post-order traversals
      */
-    Node buildTree(int[] in, int[] pre, int start, int end) {
+    Node1 buildTree(int[] in, int[] pre, int start, int end) {
         if (/* in.length<1 || pre.length < 1 || */start > end) {
             return null;
         }
 
         // first char of pre-order is the root
-        Node r = new Node(pre[preIndex++]);
+        Node1 r = new Node1(pre[preIndex++]);
 
         if (start == end)
             return r;
@@ -129,8 +129,8 @@ public class BinarySearchTree {
 
 class Node {
     int val;
-    Node left;
-    Node right;
+    Node1 left;
+    Node1 right;
 
     public Node(int val) {
         this.val = val;

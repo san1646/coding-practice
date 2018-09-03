@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 public class GenericTest {
 
     Test1 test1 = new Test1();
+    Test2 test2 = new Test2();
     
     @Test
     public void testFactorial() {
@@ -46,5 +47,11 @@ public class GenericTest {
         System.out.println("Before:"+Arrays.toString(arr));
         test1.quickSort(arr);
         System.out.println("After:"+Arrays.toString(arr));
+    }
+
+    @Test
+    public void testFindAllSubstrings() {
+        String s = "abc";
+        test2.findAllSubstrings(s, "");
     }
 }
