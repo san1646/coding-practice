@@ -8,8 +8,7 @@ public class BinarySearchTree {
     Node1 root;
     static int preIndex = 0;
 
-    public BinarySearchTree(Node1 root) {
-        this.root = root;
+    public BinarySearchTree() {
     }
 
     void postOrderTraversal(Node1 node) {
