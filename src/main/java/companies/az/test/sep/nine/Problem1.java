@@ -40,8 +40,7 @@ public class Problem1 {
         List<List<Integer>> sortedDisances = new ArrayList<>();
 
         for (Long val : keys) {
-            if (sortedDisances.size() <= numDeliveries) {
-
+            if (sortedDisances.size() < numDeliveries) {
                 sortedDisances.add(distances.get(val));
             } else {
                 return sortedDisances;
