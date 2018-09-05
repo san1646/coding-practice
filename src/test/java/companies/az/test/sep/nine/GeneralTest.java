@@ -194,7 +194,7 @@ public class GeneralTest {
 
         // (2, 4) (3, 2)
         Assert.assertEquals(result.get(0).get(0), new Integer(2));
-        Assert.assertEquals(result.get(0).get(1), new Integer(3));
+        Assert.assertEquals(result.get(0).get(1), new Integer(4));
 
         Assert.assertEquals(result.get(1).get(0), new Integer(3));
         Assert.assertEquals(result.get(1).get(1), new Integer(2));

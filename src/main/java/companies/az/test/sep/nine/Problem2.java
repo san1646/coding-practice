@@ -26,10 +26,13 @@ public class Problem2 {
 
                     List<List<Integer>> key = new ArrayList<List<Integer>>();
                     // new ArrayList<>();
-                    key.add(new ArrayList<Integer>(foregroundAppList.get(f).get(0)));
-                    key.add(new ArrayList<Integer>(backgroundAppList.get(b).get(0)));
+                    List<Integer> t1 = new ArrayList<Integer>();
+                    t1.add(foregroundAppList.get(f).get(0));
+                    t1.add(backgroundAppList.get(b).get(0));
 
-                    if (totalmemory.containsKey(mem)) {
+                    key.add(t1);
+
+                    if (totalmemory.get(mem)!=null) {
                         List<List<Integer>> existingValues = totalmemory.get(mem);
                         existingValues.addAll(key);
                         totalmemory.put(mem, existingValues);
