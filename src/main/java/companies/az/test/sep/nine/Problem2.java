@@ -20,35 +20,27 @@ public class Problem2 {
             for (int b = 0; b < backgroundAppList.size(); b++) {
                 Integer mem = foregroundAppList.get(f).get(1) + backgroundAppList.get(b).get(1);
                 if (mem <= deviceCapacity) {
-                    if (mem >= optimalMemory) {
+                    if (mem > optimalMemory) {
                         optimalMemory = mem;
                     }
-
                     List<List<Integer>> value = new ArrayList<List<Integer>>();
-                    // new ArrayList<>();
                     List<Integer> t1 = new ArrayList<Integer>();
                     t1.add(foregroundAppList.get(f).get(0));
                     t1.add(backgroundAppList.get(b).get(0));
-
                     value.add(t1);
-
                     List<List<Integer>> existingValues = totalmemory.get(mem);
-                    if (existingValues!=null) {
+                    if (existingValues != null) {
                         existingValues.addAll(value);
                         totalmemory.put(mem, existingValues);
                     } else {
                         totalmemory.put(mem, value);
                     }
-
                 }
-
             }
         }
-        if (totalmemory.get(optimalMemory) == null || totalmemory.get(optimalMemory).isEmpty()) {
-            return new ArrayList<List<Integer>>();
-        }
-        return totalmemory.get(optimalMemory);
 
+        List<List<Integer>> optimalIds = totalmemory.get(optimalMemory);
+        return optimalIds != null ? optimalIds : new ArrayList<List<Integer>>();
     }
     // METHOD SIGNATURE ENDS
 }
