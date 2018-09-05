@@ -24,20 +24,20 @@ public class Problem2 {
                         optimalMemory = mem;
                     }
 
-                    List<List<Integer>> key = new ArrayList<List<Integer>>();
+                    List<List<Integer>> value = new ArrayList<List<Integer>>();
                     // new ArrayList<>();
                     List<Integer> t1 = new ArrayList<Integer>();
                     t1.add(foregroundAppList.get(f).get(0));
                     t1.add(backgroundAppList.get(b).get(0));
 
-                    key.add(t1);
+                    value.add(t1);
 
-                    if (totalmemory.get(mem)!=null) {
-                        List<List<Integer>> existingValues = totalmemory.get(mem);
-                        existingValues.addAll(key);
+                    List<List<Integer>> existingValues = totalmemory.get(mem);
+                    if (existingValues!=null) {
+                        existingValues.addAll(value);
                         totalmemory.put(mem, existingValues);
                     } else {
-                        totalmemory.put(mem, key);
+                        totalmemory.put(mem, value);
                     }
 
                 }
