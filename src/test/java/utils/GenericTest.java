@@ -1,7 +1,8 @@
 package utils;
 
 import java.util.Arrays;
-import org.junit.Assert;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GenericTest {
@@ -53,5 +54,32 @@ public class GenericTest {
     public void testFindAllSubstrings() {
         String s = "abc";
         test2.findAllSubstrings(s, "");
+    }
+
+    @Test
+    public void testJewelsAndStones1() {
+        String J = "aA";
+        String S = "aAAbb";
+        int res = test1.jewelsAndStones(J, S);
+        System.out.println(res);
+        Assert.assertEquals(res, 3);
+    }
+
+    @Test
+    public void testJewelsAndStones2() {
+        String J = "z";
+        String S = "ZZ";
+        int res = test1.jewelsAndStones(J, S);
+        System.out.println(res);
+        Assert.assertEquals(res, 0);
+    }
+
+    @Test
+    public void testJewelsAndStones3() {
+        String J = "abcdefghijklmnopqrstuvwxyz";
+        String S = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+        int res = test1.jewelsAndStones(J, S);
+        System.out.println(res);
+        Assert.assertEquals(res, 37);
     }
 }

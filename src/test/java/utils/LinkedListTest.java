@@ -1,9 +1,8 @@
 package utils;
 
-import javax.management.ListenerNotFoundException;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import junit.framework.Assert;
 import utils.LinkedList.ListNode;
 
 public class LinkedListTest {

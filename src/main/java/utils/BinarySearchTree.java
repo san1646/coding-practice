@@ -78,7 +78,7 @@ public class BinarySearchTree {
         }
 
         // first char of pre-order is the root
-        Node1 r = new Node1(pre[preIndex++]);
+        Node1 r = null; //TODO new Node1(pre[preIndex++]);
 
         if (start == end)
             return r;

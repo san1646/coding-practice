@@ -20,7 +20,8 @@ public class Graph {
     }
     
     private Node getNode(int val) {
-        if()
+        //TODO: fix
+        //if(true)
         return null;
     }
     public void addToGraph(int source, int dest) {

@@ -1,6 +1,5 @@
 package companies.hackerrank;
 
-import static org.junit.Assert.assertTrue;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

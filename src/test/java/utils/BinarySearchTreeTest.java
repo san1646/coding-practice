@@ -1,7 +1,7 @@
 package utils;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import junit.framework.Assert;
 
 public class BinarySearchTreeTest {
     BinarySearchTree tree = new BinarySearchTree();

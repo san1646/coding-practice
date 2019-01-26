@@ -340,7 +340,22 @@ public class Test1 {
         return 0;
     }
 
-    
-    
+  /** https://leetcode.com/problems/jewels-and-stones/ */
+  public int jewelsAndStones(String J, String S) {
 
+    char[] arrj = J.toCharArray();
+    char[] arrs = S.toCharArray();
+
+    int res = 0;
+    for (char c : arrs) {
+      for (char j : arrj) {
+        if (c == j) {
+          res++;
+          break;
+        }
+      }
+    }
+
+    return res;
+  }
 }

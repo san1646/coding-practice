@@ -1,11 +1,12 @@
 package utils;
 
-import static org.junit.Assert.assertTrue;
-import java.math.BigInteger;
-import java.time.LocalDate;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.math.BigInteger;
+
+import static org.testng.Assert.assertTrue;
 
 public class ConcurrentRequestTest {
 
