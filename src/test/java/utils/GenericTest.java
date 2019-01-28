@@ -1,6 +1,8 @@
 package utils;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.IntStream;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -82,4 +84,125 @@ public class GenericTest {
         System.out.println(res);
         Assert.assertEquals(res, 37);
     }
+
+
+    @Test(groups = "detectCapital")
+    public void testDetectCapitalUse1() {
+        String word = "USA";
+        boolean res = test1.detectCapitalUse(word);
+        Assert.assertTrue(res);
+    }
+
+    @Test(groups = "detectCapital")
+    public void testDetectCapitalUse2() {
+        String word = "Google";
+        boolean res = test1.detectCapitalUse(word);
+        Assert.assertTrue(res);
+    }
+
+    @Test(groups = "detectCapital")
+    public void testDetectCapitalUse3() {
+        String word = "FlaG";
+        boolean res = test1.detectCapitalUse(word);
+        Assert.assertFalse(res);
+    }
+
+    @Test(groups = "detectCapital")
+    public void testDetectCapitalUse4() {
+        String word = "ore";
+        boolean res = test1.detectCapitalUse(word);
+        Assert.assertTrue(res);
+    }
+
+    @Test(groups = "detectCapital")
+    public void testDetectCapitalUse5() {
+        String word = "So";
+        boolean res = test1.detectCapitalUse(word);
+        Assert.assertTrue(res);
+    }
+
+    @Test(groups = "detectCapital")
+    public void testDetectCapitalUse6() {
+        String word = "mL";
+        boolean res = test1.detectCapitalUse(word);
+        Assert.assertFalse(res);
+    }
+
+
+    @Test(groups = "detectCapital")
+    public void testDetectCapitalUse7() {
+        String word = "Roe";
+        boolean res = test1.detectCapitalUse(word);
+        Assert.assertTrue(res);
+    }
+
+    @Test(groups = "detectCapital")
+    public void testDetectCapitalUse8() {
+        String word = "oRe";
+        boolean res = test1.detectCapitalUse_Elegant(word);
+        Assert.assertFalse(res);
+    }
+
+
+    @Test(groups = "smallestIntegerNotIn")
+    public void testSmallestIntegerNotIn1() {
+        int[] ints = {1,3,6,4,1,2};
+        int res = test1.smallestIntegerNotIn(ints);
+        Assert.assertEquals(res,5);
+    }
+
+    @Test(groups = "smallestIntegerNotIn")
+    public void testSmallestIntegerNotIn2() {
+        int[] ints = {1,2,3};
+        int res = test1.smallestIntegerNotIn(ints);
+        Assert.assertEquals(res,4);
+    }
+
+    @Test(groups = "smallestIntegerNotIn")
+    public void testSmallestIntegerNotIn3() {
+        int[] ints = {-1,-2,-3};
+        int res = test1.smallestIntegerNotIn(ints);
+        Assert.assertEquals(res,1);
+    }
+
+    @Test(groups = "smallestIntegerNotIn")
+    public void testSmallestIntegerNotIn4() {
+        int[] ints = {-1,-3};
+        int res = test1.smallestIntegerNotIn(ints);
+        Assert.assertEquals(res,1);
+    }
+
+    @Test(groups = "aliveFish")
+    public void testAliveFish1() {
+        int[] A = {4,3,2,1,5};
+        int[] B = {0,1,0,0,0};
+        int res = test1.aliveFish(A, B, 5);
+        System.out.println("result::"+res);
+        Assert.assertEquals(res,2);
+    }
+
+
+
+    @Test
+    public void testSortingBySecondArray(){
+
+        int[] fishSizeArray = {100, 1200, 300, 400, 500};
+         int[] arr = {3,2,1};
+
+            Integer[] unsortedArray =
+                    IntStream.of(arr).boxed().toArray(Integer[]::new);
+            Arrays.sort(unsortedArray, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return Integer.compare(fishSizeArray[o1], fishSizeArray[o2]);
+                }
+            });
+
+
+        System.out.println(Arrays.toString(unsortedArray));
+
+
+    }
+
+
 }
