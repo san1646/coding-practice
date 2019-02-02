@@ -2,7 +2,6 @@ package utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.testng.Assert;
 
 /**
  * https://projecteuler.net/
