@@ -7,3 +7,4 @@ Update: 20181106 from the new pc
 3
 
 P.S.: from ubuntu
+testing configs
