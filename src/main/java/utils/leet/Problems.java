@@ -1,5 +1,10 @@
 package utils.leet;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class Problems {
 
     /**
@@ -22,10 +27,9 @@ public class Problems {
 
     /**
      * https://leetcode.com/problems/max-increase-to-keep-city-skyline/
+     * <p>
+     * Accepted Note: can improve memory usage 2019-02-02T15:12:36.136EST
      *
-     * Accepted
-     * Note: can improve memory usage
-     * 2019-02-02T15:12:36.136EST
      * @param grid
      * @return
      */
@@ -78,4 +82,64 @@ public class Problems {
             System.out.println("--" + i);
         }
     }
+
+    private void printList(List<Integer> list) {
+        for (Integer i : list) {
+            System.out.println(">" + i);
+        }
+        System.out.println("---");
+    }
+
+    /**
+     * /** * Definition for a binary tree node. * public class TreeNode { *     int val; *     TreeNode left; *
+     * TreeNode right; *     TreeNode(int x) { val = x; } * }
+     * <p>
+     * Understood the question wrong; This creates a new list https://leetcode
+     * .com/problems/flatten-binary-tree-to-linked-list/
+     */
+    public void flattenBinaryTreeToLinkedList(TreeNode root) {
+        List<Integer> flattenedList = new LinkedList<>();
+        flattenedList = flattenTree(root, flattenedList);
+        printList(flattenedList);
+    }
+
+    private List<Integer> flattenTree(TreeNode curr, List<Integer> flattenedList) {
+        if (curr != null) {
+            flattenedList.add(curr.val);
+            flattenTree(curr.left, flattenedList);
+            flattenTree(curr.right, flattenedList);
+        }
+        return flattenedList;
+    }
+
+    /**
+     * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
+     *
+     *    1
+     *    / \
+     *   2   5
+     *  / \   \
+     * 3   4   6
+     * @param node
+     */
+    public void flattenBinaryTreeToLinkedListInPlace(TreeNode node) {
+        if(node==null) return;
+
+        TreeNode left = node.left;
+        TreeNode right = node.right;
+        flattenBinaryTreeToLinkedListInPlace(node.left);
+        flattenBinaryTreeToLinkedListInPlace(node.right);
+
+        if(left!=null){
+            node.left=null;
+        }
+        if(left!=null && right!=null){
+            left.right=right;
+            flattenBinaryTreeToLinkedList(right);
+            node.right=left;
+        }
+
+        return;
+    }
+
 }

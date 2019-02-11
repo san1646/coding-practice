@@ -59,4 +59,89 @@ public class ProblemsTest {
         System.out.println("Sum for grid:::" + res);
     }
 
+    @Test
+    public void testFlattenBinaryTreeToList() {
+        TreeNode root = new TreeNode(1);
+
+        buildBinaryTree(root, 2);
+//        preOrderPrintTree(root);
+
+        buildBinaryTree(root, 3);
+//        preOrderPrintTree(root);
+
+        buildBinaryTree(root, 4);
+//        preOrderPrintTree(root);
+
+        buildBinaryTree(root, 5);
+//        preOrderPrintTree(root);
+
+        buildBinaryTree(root, 6);
+        preOrderPrintTree(root);
+        problems.flattenBinaryTreeToLinkedList(root);
+
+    }
+
+    private TreeNode buildBinaryTree(TreeNode root, int addThis) {
+        if (root==null) {
+            return new TreeNode(addThis);
+        }
+
+        if (root.val < addThis) {
+            root.right = buildBinaryTree(root.right, addThis);
+        } else {
+            root.left = buildBinaryTree(root.left, addThis);
+        }
+        return  root;
+    }
+
+    private void preOrderPrintTree(TreeNode root) {
+        if (root != null) {
+            System.out.println("Val::" + root.val);
+            preOrderPrintTree(root.left);
+            preOrderPrintTree(root.right);
+        }
+        System.out.println("---");
+    }
+
+
+    @Test
+    public void testFlattenBinaryTreeToListInPlace() {
+        TreeNode root = new TreeNode(1);
+
+        buildBinaryTree(root, 2);
+//        preOrderPrintTree(root);
+
+        buildBinaryTree(root, 3);
+//        preOrderPrintTree(root);
+
+        buildBinaryTree(root, 4);
+//        preOrderPrintTree(root);
+
+        buildBinaryTree(root, 5);
+//        preOrderPrintTree(root);
+
+        buildBinaryTree(root, 6);
+//        preOrderPrintTree(root);
+        System.out.println("in place");
+        problems.flattenBinaryTreeToLinkedListInPlace(root);
+        root.print();
+    }
+
+    @Test
+    public void testFlattenBinaryTreeToListInPlace2() {
+        TreeNode root = new TreeNode(1);
+
+        buildBinaryTree(root, 2);
+        buildBinaryTree(root, 3);
+        buildBinaryTree(root, 4);
+        buildBinaryTree(root, 5);
+        buildBinaryTree(root, 6);
+
+        root.print();
+        problems.flattenBinaryTreeToLinkedListInPlace(root);
+
+        System.out.println("in place");
+        root.print();
+    }
+
 }
