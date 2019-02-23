@@ -1,8 +1,12 @@
 package utils.leet;
 
+import java.util.Base64;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class Problems {
@@ -140,6 +144,29 @@ public class Problems {
         }
 
         return;
+    }
+
+    /**
+     * https://leetcode.com/problems/encode-and-decode-tinyurl/
+     * Uses Base64 API
+     * @param longUrl
+     * @return
+     */
+    Map<Integer, String> encodedStrings = new HashMap<>();
+    public String encode(String longUrl) {
+
+        Map<Integer, String> map = new HashMap<>();
+        Random r=new Random();
+        int key=r.nextInt(10000);
+            while(map.containsKey(key)) {
+                key = r.nextInt(10000);
+            }
+            map.put(key,longUrl);
+            return "http://tinyurl.com/"+key;
+        /*public String decode(String shortUrl) {
+            return map.get(Integer.parseInt(shortUrl.replace("http://tinyurl.com/", "")));
+        }*/
+
     }
 
 }

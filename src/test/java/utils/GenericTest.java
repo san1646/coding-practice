@@ -6,13 +6,14 @@ import java.util.stream.IntStream;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.concepts.ParentClass1;
 
 public class GenericTest {
 
     Test1 test1 = new Test1();
     Test2 test2 = new Test2();
     
-    @Test
+    @org.junit.jupiter.api.Test
     public void testFactorial() {
         int n=225;
         System.out.println(n+">>>"+test1.factorial(n));
@@ -202,6 +203,12 @@ public class GenericTest {
         System.out.println(Arrays.toString(unsortedArray));
 
 
+    }
+
+    @Test
+    public void testJavaInheritance(){
+        ParentClass1<String> parent = new ParentClass1<>();
+        parent.print();
     }
 
 
