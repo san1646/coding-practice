@@ -1,5 +1,10 @@
 package utils.leet;
 
+import java.util.LinkedList;
+
+/**
+ * This is a BST
+ */
 public class TreeNode {
     int val;
     TreeNode left;
@@ -9,19 +14,50 @@ public class TreeNode {
         val = x;
     }
 
-    public void print() {
-        System.out.println("Val::" + this.val);
-        if (this.left == null) {
-            System.out.println("Val::null");
-        } else {
-            this.left.print();
+    public void inOrderTraversal() {
+        if (this == null) {
+            return;
         }
+        System.out.println(this.val);
+        if (this.left != null) {
+            this.left.inOrderTraversal();
+        }
+        if (this.right != null) {
+            this.right.inOrderTraversal();
+        }
+    }
 
-        if (this.right == null) {
-            System.out.println("Val::null");
+    public void add(int val) {
+//        TreeNode newNode ;
+        if (val < this.val) {
+            if(this.left == null){
+                this.left = new TreeNode(val);
+            }else{
+                this.left.add(val);
+            }
         } else {
-            this.right.print();
+            if(this.right == null){
+                this.right = new TreeNode(val);
+            }else{
+                this.right.add(val);
+            }
         }
-        //System.out.println("---");
+    }
+
+
+    public StringBuilder toString(StringBuilder prefix, boolean isTail, StringBuilder sb) {
+        if(right!=null) {
+            right.toString(new StringBuilder().append(prefix).append(isTail ? "│   " : "    "), false, sb);
+        }
+        sb.append(prefix).append(isTail ? "└── " : "┌── ").append(val).append("\n");
+        if(left!=null) {
+            left.toString(new StringBuilder().append(prefix).append(isTail ? "    " : "│   "), true, sb);
+        }
+        return sb;
+    }
+
+    @Override
+    public String toString() {
+        return this.toString(new StringBuilder(), true, new StringBuilder()).toString();
     }
 }

@@ -193,7 +193,7 @@ public class ProblemsTest {
 //        preOrderPrintTree(root);
         System.out.println("in place");
         problems.flattenBinaryTreeToLinkedListInPlace(root);
-        root.print();
+        root.inOrderTraversal();
     }
 
     @Test
@@ -206,11 +206,11 @@ public class ProblemsTest {
         buildBinaryTree(root, 5);
         buildBinaryTree(root, 6);
 
-        root.print();
+        root.inOrderTraversal();
         problems.flattenBinaryTreeToLinkedListInPlace(root);
 
         System.out.println("in place");
-        root.print();
+        root.inOrderTraversal();
     }
 
     @Test
@@ -222,6 +222,56 @@ public class ProblemsTest {
                 .decode(encodedUrl.getBytes()));
 
         Assert.assertEquals(url, decodedUrl);
+    }
+
+    @Test
+    public void testMaximumProduct() {
+        int[] nums =new int[]{1,2,3,4};
+        int res = problems.maximumProduct(nums);
+        Assert.assertEquals(24, res);
+
+        int[] nums1 =new int[0];
+        int res1 = problems.maximumProduct(nums1);
+        Assert.assertEquals(0, res1);
+
+        int[] nums2 =new int[]{4,3,1,2};
+        int res2 = problems.maximumProduct(nums2);
+        Assert.assertEquals(24, res2);
+
+        //[-4,-3,-2,-1,60]
+        int[] nums3 =new int[]{-4,-3,-2,-1,60};
+        int res3 = problems.maximumProduct(nums3);
+        Assert.assertEquals(120, res3);
+
+    }
+
+
+    @Test
+    public void testBackspaceCompare1(){
+        String s = "ab#c";
+        String t = "ad#c";
+        Assert.assertTrue(problems.backspaceCompare(s,t));
+    }
+
+    @Test
+    public void testBackspaceCompare2(){
+        String s = "a##c";
+        String t = "#a#c";
+        Assert.assertTrue(problems.backspaceCompare(s,t));
+    }
+
+    @Test
+    public void testBackspaceCompare3(){
+        String s = "ab##";
+        String t = "#a#c";
+        Assert.assertFalse(problems.backspaceCompare(s,t));
+    }
+
+    @Test
+    public void testBackspaceCompare4(){
+        String s = "a#c";
+        String t = "b";
+        Assert.assertFalse(problems.backspaceCompare(s,t));
     }
 
 }

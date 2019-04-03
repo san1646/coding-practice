@@ -1,12 +1,6 @@
 package utils.leet;
 
-import java.util.Base64;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class Problems {
@@ -167,6 +161,51 @@ public class Problems {
             return map.get(Integer.parseInt(shortUrl.replace("http://tinyurl.com/", "")));
         }*/
 
+    }
+
+    /**
+     * https://leetcode.com/problems/maximum-product-of-three-numbers/
+     * @param nums
+     * @return
+     *
+     * TODO not working for negative numbers
+     */
+    public int maximumProduct(int[] nums) {
+        if(nums.length>=3) {
+            Arrays.sort(nums);
+            System.out.println("after sort: "+Arrays.toString(nums));
+            return nums[nums.length-1]
+                    * nums[nums.length-2]
+                    *nums[nums.length-3];
+        }
+        else return 0;
+    }
+
+    /**
+     * https://leetcode.com/problems/backspace-string-compare/
+     *
+     * @param S
+     * @param T
+     * @return
+     */
+    public boolean backspaceCompare(String S, String T) {
+        return compile(S).equalsIgnoreCase(compile(T));
+    }
+
+    private String compile(String S) {
+        final char b = '#';
+        StringBuilder compiledS = new StringBuilder();
+        for (char c : S.toCharArray()) {
+            if (b == c && compiledS.length() == 0) {
+                continue;
+            } else if (b == c) {
+                compiledS.deleteCharAt(compiledS.length() - 1);
+            } else {
+                //non backspace char
+                compiledS.append(c);
+            }
+        }
+        return compiledS.toString();
     }
 
 }
