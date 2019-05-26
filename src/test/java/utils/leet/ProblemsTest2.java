@@ -59,5 +59,24 @@ public class ProblemsTest2 {
         Assert.assertEquals(9, res);
     }
 
+    @Test
+    public void testReverseString(){
+        Assert.assertEquals("cba",problems2.reverseString("abc"));
+    }
+
+    @Test()
+    public void testMultiplyComplexNumbers1(){
+        Assert.assertEquals("0+2i",problems2.complexNumberMultipy("1+1i","1+1i"));
+    }
+
+    @Test
+    public void testMultiplyComplexNumbers2(){
+        Assert.assertEquals("0+-2i",problems2.complexNumberMultipy("1+-1i","1+-1i"));
+    }
+
+    @Test
+    public void testMultiplyComplexNumbers3(){
+        Assert.assertEquals("0+-2i",problems2.complexNumberMultipy("1+-1i","1+-1i"));
+    }
 
 }
