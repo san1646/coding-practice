@@ -47,77 +47,56 @@ public class Problems2 {
 
     public String reverseString(String x) {
         char[] rr = new char[x.length()];
-        for (int i=x.length()-1;i>=0;i--) {
-            rr[x.length()-i-1] = x.charAt(i);
+        for (int i = x.length() - 1; i >= 0; i--) {
+            rr[x.length() - i - 1] = x.charAt(i);
         }
         return String.valueOf(rr);
     }
 
     /**
      * https://leetcode.com/problems/complex-number-multiplication/
+     *
      * @return
      */
-    public String complexNumberMultipy(String one, String two){
-        //a+bi
-        String[] ones = parse(one);
-        String[] twos = parse(two);
+    public String complexNumberMultipy(String one, String two) {
+        String[] ones = one.split("\\+");
+        String[] twos = two.split("\\+");
         //(a+b) * (c+d) = ac+ad+bc+bd
         String imaginary = "0";
         String real = "0";
-        for(int i =0;i<ones.length;i++){
-            for(int j =0;j<ones.length;j++){
-                String x = multiplyComplex(ones[i], twos[j]);
-                if(x.contains("i")){
+        for (int i = 0; i < ones.length; i++) {
+            for (int j = 0; j < ones.length; j++) {
+                String x = multiplyComplex(ones[i], ones[i].contains("i"), twos[j], twos[j].contains("i"));
+                if (x.contains("i")) {
                     imaginary = String.valueOf(
                             Integer.parseInt(x.replace("i", ""))
-                            + Integer.parseInt(imaginary)
+                                    + Integer.parseInt(imaginary)
                     );
-                }else{
+                } else {
                     real = String.valueOf(Integer.parseInt(x) + Integer.parseInt(real));
                 }
             }
         }
-        //11i1i-1
-
-        String value = real +"+" + imaginary +"i";
-
-        return value;
+        return real + "+" + imaginary + "i";
     }
 
-    private String[] parse(String sss){
-        String [] parts = sss.split("\\+");
-        String[] complete = new String[2];
-        complete[0] = parts[0];
-        complete[1] = parts[1];
-        return complete;
-    }
-
-    private String multiplyComplex(String a, String b) {
-        int numA, numB;
-        //-12+-13i
-        //eg a = [-,1,2]
-        //b=[-,1,3,i]
-        boolean ia = false, ib = false;
-        if (a.contains("i")) {
-            numA = Integer.parseInt(a.replace("i", ""));
-            ia = true;
-        } else {
-            numA = Integer.parseInt(a);
-        }
-        if (b.contains("i")) {
-            numB = Integer.parseInt(b.replace("i", ""));
-            ib = true;
-        } else {
-            numB = Integer.parseInt(b);
-        }
-
+    /**
+     * Input = 2, 3i Result = 6i
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    private String multiplyComplex(String a, boolean ia, String b, boolean ib) {
         String val = "";
+        int numA = Integer.parseInt(a.replace("i", ""));
+        int numB = Integer.parseInt(b.replace("i", ""));
         if (ia && ib) {
             val = String.valueOf(-1 * numA * numB);
         } else {
-            if (ia && ib == false || ia == false && ib) {
+            if (ia != ib) {
                 val = String.valueOf(numA * numB) + "i";
-            }else{
+            } else {
                 val = String.valueOf(numA * numB);
             }
         }
