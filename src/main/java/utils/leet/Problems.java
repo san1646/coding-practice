@@ -1,5 +1,7 @@
 package utils.leet;
 
+import java.lang.reflect.Array;
+import java.util.*;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -265,4 +267,31 @@ public class Problems {
 
     }*/
 
+    /**
+     * https://leetcode.com/problems/third-maximum-number/
+     *
+     * @param nums
+     * @return
+     */
+    public int thirdMax(int[] nums) {
+        List<Integer> list = removeDuplicates(nums);
+        if(list.size()==1){
+            return list.get(0);
+        }
+        if(list.size()==2){
+            return list.get(0)>list.get(1) ? list.get(0) : list.get(1);
+        }
+        Collections.sort(list);
+        return list.get(list.size()-3);
+    }
+
+    private List<Integer> removeDuplicates(int[] ii) {
+        Set<Integer> numSet = new HashSet<>();
+        for (int i : ii) {
+            numSet.add(i);
+        }
+        List<Integer> list = new ArrayList<Integer>(numSet);
+        Collections.sort(list);
+        return list;
+    }
 }

@@ -213,7 +213,7 @@ public class ProblemsTest {
         root.inOrderTraversal();
     }
 
-    @Test
+    @Test()
     public void testEncodingUsingBase64() {
         String url = "https://leetcode.com/problems/encode-and-decode-tinyurl/";
         String encodedUrl = problems.encode(url);
@@ -274,4 +274,22 @@ public class ProblemsTest {
         Assert.assertFalse(problems.backspaceCompare(s,t));
     }
 
+    @Test
+    public void testThirdHighestNumber(){
+        int[] input = new int[]{3,2,1};
+        int res = problems.thirdMax(input);
+        assert res==1;
+
+        input = new int[]{1,1,2};
+        res = problems.thirdMax(input);
+        assert res==2;
+
+        input = new int[]{4,1};
+        res = problems.thirdMax(input);
+        assert res==4;
+
+        input = new int[]{1,2,3,4,5,4,3,2,1};
+        res = problems.thirdMax(input);
+        assert res==3;
+    }
 }
